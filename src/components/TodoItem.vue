@@ -8,7 +8,6 @@
 </script>
 <template>
     <div class="btn-item">
-        <span>{{ position }}</span>
         <span class="btn-item-name">{{ item.name }}</span>
         <TodoItemButon :position="position" />
     </div>

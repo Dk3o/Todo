@@ -16,30 +16,64 @@ export const useTodoStore = defineStore('todo', () => {
         },
         {
             name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
+        },
+        {
+            name: "Item 4"
         }
     ]);
 
-    const handleInput = (e) => {
-        if (e.target.value !== '') {
-            list.value.push({name: e.target.value});
+    const handleInput = () => {
+        if (inputText.value !== '') {
+            list.value.push({name: inputText.value});
         }
-        // else {
-        //     alert('Please enter a non-empty value for the todo item.');
-        // }
-        e.target.value = ''
+        else {
+            alert('Please enter a non-empty value for the todo item.');
+        }
+        inputText.value = ''
     }
 
-    const handleAddButton = (e) => {
-        handleInput(e)
-    }
+    const handleAddButton = () => {
+        handleInput();
+      }
 
     const handleEditItem = () => {
-        
+
     }
 
     const handleDeleteItem = () => {
-        
+
     }
 
-    return { list, handleInput, handleAddButton, handleEditItem, handleDeleteItem }
+
+    return { inputText, list, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo }
 })

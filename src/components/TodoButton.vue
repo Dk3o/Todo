@@ -3,15 +3,12 @@
     const todoStore = useTodoStore()
     const { handleAddButton } = todoStore
 
-    const addItem = () => {
-    // Call handleAddButton with the input value
-        handleAddButton(inputValue.value);
-    };
-
 </script>
 
 <template>
-    <a class="btn-add" @click="addItem">Add</a>
+    <a class="btn-add" @click="handleAddButton">
+        Add
+    </a>
 </template>
 
 <style scoped>

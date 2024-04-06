@@ -1,16 +1,16 @@
 <script setup>
-    import { ref } from 'vue'
+    // import { ref } from 'vue'
     import { useTodoStore } from '../stores/todo'
     const todoStore = useTodoStore()
     const { handleInput } = todoStore
-    const inputValue = ref('');
+ 
 </script>
 
 <template>
     <input type="text" 
         class="input-field" 
         placeholder="Add item..."
-        v-model="inputValue"
+        v-model="todoStore.inputText"
         @keydown.enter.prevent="handleInput"
     />
 </template>
@@ -24,7 +24,7 @@
         margin-right: 20px;
         font-size: 24px;
         color:#fff;
-        padding-top: 14px;
+        font-style: italic;
     }
 
     .input-field:focus {
