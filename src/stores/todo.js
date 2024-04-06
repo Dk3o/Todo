@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useTodoStore = defineStore('todo', () => {
@@ -52,13 +52,12 @@ export const useTodoStore = defineStore('todo', () => {
         }
     ]);
 
+
     const handleInput = () => {
         if (inputText.value !== '') {
             list.value.push({name: inputText.value});
         }
-        else {
-            alert('Please enter a non-empty value for the todo item.');
-        }
+
         inputText.value = ''
     }
 
@@ -73,7 +72,6 @@ export const useTodoStore = defineStore('todo', () => {
     const handleDeleteItem = () => {
 
     }
-
 
     return { inputText, list, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo }
 })
