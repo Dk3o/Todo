@@ -1,5 +1,8 @@
 <script setup>
     import TodoItemButon from './TodoItemButton.vue'
+    import IconEdit from '../components/icons/IconEdit.vue'
+    import IconDelete from '../components/icons/IconDelete.vue'
+
     defineProps({
         item: Object,
         position: Number
@@ -9,7 +12,14 @@
 <template>
     <div class="btn-item">
         <span class="btn-item-name">{{ item.name }}</span>
-        <TodoItemButon :position="position" />
+        <TodoItemButon :position="position">
+            <template #iconEdit>
+                <IconEdit/>
+            </template>
+            <template #iconDelete>
+                <IconDelete/>
+            </template>
+        </TodoItemButon>
     </div>
 </template>
 

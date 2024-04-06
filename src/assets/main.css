@@ -1,7 +1,8 @@
 @import './base.css';
 
 body {
-  background: #2E4E7D;
+  /* background: #2E4E7D; */
+  background: #1c2b41;
   display: unset;
 }
 
@@ -27,25 +28,10 @@ a,
 
 @media (min-width: 1024px) {
   #app {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
-}
-
-      /* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #26354b;
-  border-radius: 4px;
-
-
 }
