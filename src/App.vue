@@ -1,48 +1,35 @@
 <script setup>
-  import { onMounted, onUnmounted, ref, watch } from 'vue';
+  import { ref } from 'vue';
   import TodoInput from './components/TodoInput.vue'
   import TodoButton from './components/TodoButton.vue'
   import TodoList from './components/TodoList.vue'
+  import IconArrowUp from './components/icons/IconArrowUp.vue'
 
-  const scroll = ref()
- 
-  onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-  });
+  const scroll = ref();
 
-  onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-  });
-
-  const handleScroll = () => {
-    const todoHeader = document.querySelector('.todo-header');
-    if (window.scrollY > 0) {
-      todoHeader.style.backgroundColor = '#2E4E7D'; // Change to your desired color
-    } else {
-      todoHeader.style.backgroundColor = ''; // Reset to default color
-    }
-  }
-
-  const scrollToTop = () => {
+const scrollToTop = () => {
     scroll.value.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth'
-    })
-  }
-
+      block: 'start',
+      behavior: 'smooth'
+    });
+};
 </script>
 
 <template>
-  <main ref="scroll">
+  <main>
     <div class="wrapper">
       <div class="todo">
         <div class="todo-header">
           <TodoInput />
           <TodoButton />
         </div>
-        <TodoList />
+        <TodoList/>
+        <div class="scroll-to-top">
+          <a @click="scrollToTop">
+            <IconArrowUp/>
+          </a>
+        </div>
       </div>
-      <a class="scroll-to-top" @click="scrollToTop">Top</a>
     </div>
   </main>
 </template>
@@ -50,7 +37,7 @@
 <style scoped>
   .wrapper {
     width: 620px;
-    margin: 0 auto;
+
   }
 
   .todo {
@@ -59,26 +46,31 @@
 
   .todo-header {
     display: flex;
-    position: sticky;
-    padding: 50px 0;
-    top: 0;
-    z-index: 999;
-    /* background: #2E4E7D; */
+    padding: 50px 20px 50px 0;
+
   }
 
   .scroll-to-top {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .scroll-to-top a {
     background-color: #15A381;
-    border-radius: 38px;
+    border-radius: 50%;
     height: 44px;
     width: 44px;
     color: #fff;
     display: flex;
     align-items: center;
-    position: fixed;
-    bottom: 50px;
-    right: 110px;
     justify-content: center;
     cursor: pointer;
   }
+
+  .scroll-to-top a:hover {
+        cursor: pointer;
+        background-color: #208f74;
+    }
 
 </style>
