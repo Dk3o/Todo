@@ -36,17 +36,18 @@ const scrollToTop = () => {
 
 <style scoped>
   .wrapper {
-    width: 620px;
+    width: 660px;
 
   }
 
   .todo {
+    position: relative;
     font-size: 18px;
   }
 
   .todo-header {
     display: flex;
-    padding: 50px 20px 50px 0;
+    padding: 50px 40px 50px 40px;
 
   }
 

@@ -1,6 +1,12 @@
+<script setup>
+    defineProps({
+        color: String
+    })
+</script>
+
 <template>
     <svg width="24" height="24" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.21666 2.23334L16.2167 16.2333" stroke="white" stroke-width="4" stroke-linecap="round"/>
-        <path d="M2.21666 16.2334L16.2167 2.23335" stroke="white" stroke-width="4" stroke-linecap="round"/>
+        <path d="M2.21666 2.23334L16.2167 16.2333" :stroke="color" stroke-width="4" stroke-linecap="round"/>
+        <path d="M2.21666 16.2334L16.2167 2.23335" :stroke="color" stroke-width="4" stroke-linecap="round"/>
     </svg>
 </template>
