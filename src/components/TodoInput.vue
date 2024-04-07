@@ -25,6 +25,7 @@
         font-size: 24px;
         color:#fff;
         font-style: italic;
+        padding: 0 12px;
     }
 
     .input-field:focus {
