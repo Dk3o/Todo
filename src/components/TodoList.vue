@@ -4,20 +4,19 @@
     import { ref, watch, watchEffect } from 'vue'
 
     const todoStore = useTodoStore()
-    const { list } = todoStore
 
     const scroll = ref()
     const todolist = ref(0)
-
     const scrollToBottom = () => {
         scroll.value = document.querySelector('.todo-list')
         scroll.value.scrollTop = scroll.value.scrollHeight
     }
 
     watchEffect(() => {
-        if (list.length > todolist.value) {
+        if (todoStore.selectedCategoryList.length > todolist.value) {
             setTimeout(scrollToBottom, 500);
-            todolist.value = list.length;
+            todolist.value = todoStore.selectedCategoryList.length;
+            console.log(todolist.value)
         }
     });
 
@@ -25,7 +24,7 @@
 
 <template>
     <div class="todo-list" ref="scroll">
-        <TodoItem v-for="(item, index) in list" :key="index" :item="item" :position="index"/>
+        <TodoItem v-for="(item, index) in todoStore.selectedCategoryList" :key="index" :item="item"/>
     </div>
 </template>
 
