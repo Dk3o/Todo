@@ -156,7 +156,9 @@ export const useTodoStore = defineStore('todo', () => {
 
     const handleInput = () => {
         if (inputText.value !== '') {
+            inputText.value = inputText.value.charAt(0).toUpperCase() + inputText.value.slice(1);
             list.value[categoryIndex.value].items.push({name: inputText.value});
+            console.log(inputText.value)
         }
         
         inputText.value = ''
