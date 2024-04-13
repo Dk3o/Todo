@@ -1,16 +1,24 @@
 <script setup>
+    import { ref } from 'vue'
+    import { useTodoStore } from '@/stores/todo';
+    const todoStore = useTodoStore();
+
+    const isActive = ref(false)
+
     var props = defineProps({
         card: Object,
-        position: Number
+        categoryIndex: Number
     })
 
-    const loadContent = () => {
-        console.log(props.position)
+    const loadContent = (e) => {
+        todoStore.selectedCategory(props.categoryIndex)
+        isActive.value = !isActive.value
+        console.log(e)
     }
 </script>
 <template>
-    <div class="card" @click="loadContent">
-        <span class="card-name">{{ card.category }}</span>
+    <div class="card" :class="{'card-active' : isActive}" @click="loadContent">
+        <span class="card-name ">{{ card.category }}</span>
     </div>
 </template>
 
@@ -18,14 +26,20 @@
     .card {
         width: auto;
         height: auto;
-        background-color: #15A381;
+        background-color: #912fdf;
+        color: #fff;
         padding: 10px;
         float: left;
-        margin-left: 10px;
+        margin: 5px;
         border-radius: 12px;
     }
 
     .card:hover {
-        background-color: #208f74;
+        background-color: #a30ea7;
+        cursor: pointer;
+    }
+
+    .card-active {
+        background-color: #912fdf;
     }
 </style>

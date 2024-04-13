@@ -5,7 +5,6 @@
   import { useTodoStore } from '@/stores/todo';
 
   const todoStore = useTodoStore()
-    const { list } = todoStore
 
   const scroll = ref();
 
@@ -22,11 +21,13 @@ const scrollToTop = () => {
     <div class="container">
       <div class="wrapper">
         <div class="test">
-          <Card  v-for="(card, index) in list" :key="index" :card="card" :position="index" />
+          <Card  v-for="(card, index) in todoStore.list" :key="index" :card="card" :categoryIndex="index" />
         </div>
       </div>
       <div class="wrapper">
-        <CardContainer />
+        <template v-if="todoStore.isCategoryClicked">
+          <CardContainer />
+        </template>
       </div>
     </div>
   </main>
