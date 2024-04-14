@@ -13,9 +13,9 @@
     }
 
     watchEffect(() => {
-        if (todoStore.selectedCategoryList.length > todolist.value) {
+        if (todoStore.selectedtopicList.length > todolist.value) {
             setTimeout(scrollToBottom, 500);
-            todolist.value = todoStore.selectedCategoryList.length;
+            todolist.value = todoStore.selectedtopicList.length;
             console.log(todolist.value)
         }
     });
@@ -24,7 +24,7 @@
 
 <template>
     <div class="todo-list" ref="scroll">
-        <TodoItem v-for="(item, index) in todoStore.selectedCategoryList" :key="index" :item="item"/>
+        <TodoItem v-for="(item, index) in todoStore.selectedtopicList" :key="index" :item="item"/>
     </div>
 </template>
 

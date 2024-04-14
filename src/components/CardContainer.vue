@@ -6,9 +6,9 @@
 </script>
 
 <template>
-    <div class="todo">
+    <div class="todo" >
         <div class="todo-header">
-            <TodoInput />
+            <TodoInput :placeholder="`Add item...`"/>
             <TodoButton />
         </div>
         <TodoList/>
