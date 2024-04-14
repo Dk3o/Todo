@@ -2,10 +2,14 @@
     // import { ref } from 'vue'
     import { useTodoStore } from '../stores/todo'
     const todoStore = useTodoStore()
-    const { handleInput, selectedCategory } = todoStore
+    const { handleInput, selectedtopic } = todoStore
+
+    defineProps( {
+        placeholder: Text
+    })
 
     const input = () => {
-        todoStore.handleInput(todoStore.selectedCategory)
+        todoStore.handleInput(todoStore.selectedtopic)
     }
  
 </script>
@@ -13,7 +17,7 @@
 <template>
     <input type="text" 
         class="input-field" 
-        placeholder="Add item..."
+        :placeholder="placeholder"
         v-model="todoStore.inputText"
         @keydown.enter.prevent="input"
     />

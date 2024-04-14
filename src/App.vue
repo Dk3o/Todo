@@ -1,4 +1,6 @@
 <script setup>
+    import TodoInput from './components/TodoInput.vue';
+    import TodoButton from './components/TodoButton.vue';
   import { ref } from 'vue';
   import Card from './components/Card.vue'
   import CardContainer from './components/CardContainer.vue'
@@ -19,16 +21,16 @@ const scrollToTop = () => {
 <template>
   <main>
     <div class="container">
-      <div class="wrapper">
-        <div class="test">
-          <Card  v-for="(card, index) in todoStore.list" :key="index" :card="card" :categoryIndex="index" />
+        <div class="card-container">
+          <div class="card-header">
+            <TodoInput :placeholder="`Add topic...`"/>
+            <TodoButton />
+          </div>
+          <Card  v-for="(card, index) in todoStore.list" :key="index" :card="card" :topicIndex="index" />
         </div>
-      </div>
-      <div class="wrapper">
-        <template v-if="todoStore.isCategoryClicked">
+        <template v-if="todoStore.istopicClicked">
           <CardContainer />
         </template>
-      </div>
     </div>
   </main>
 </template>
@@ -36,12 +38,20 @@ const scrollToTop = () => {
 <style scoped>
   .container {
     display: flex;
+    gap: 5%;
   }
 
   .wrapper {
-    width: 660px;
-
+    width: 100%;
   }
 
+  .card-container {
+    width: 40%;
+  }
+
+  .card-header {
+    display: flex;
+    padding: 50px 40px 50px 40px;
+  }
 
 </style>

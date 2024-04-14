@@ -7,18 +7,17 @@
 
     var props = defineProps({
         card: Object,
-        categoryIndex: Number
+        topicIndex: Number
     })
 
     const loadContent = (e) => {
-        todoStore.selectedCategory(props.categoryIndex)
+        todoStore.selectedtopic(props.topicIndex)
         isActive.value = !isActive.value
-        console.log(e)
     }
 </script>
 <template>
     <div class="card" :class="{'card-active' : isActive}" @click="loadContent">
-        <span class="card-name ">{{ card.category }}</span>
+        <span class="card-name ">{{ card.topic }}</span>
     </div>
 </template>
 
@@ -30,7 +29,7 @@
         color: #fff;
         padding: 10px;
         float: left;
-        margin: 5px;
+        margin: 0 5px 10px 5px;
         border-radius: 12px;
     }
 

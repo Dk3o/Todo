@@ -4,12 +4,12 @@ import { defineStore } from "pinia";
 export const useTodoStore = defineStore('todo', () => {
 
     const inputText = ref('');
-    const selectedCategoryList = ref([])
-    const isCategoryClicked = ref(false)
-    const categoryIndex = ref(null)
+    const selectedtopicList = ref([])
+    const istopicClicked = ref(false)
+    const topicIndex = ref(null)
     const list = ref([
         {
-            category: "Groceries",
+            topic: "Groceries",
             items: [
               { name: "Milk", status: true },
               { name: "Butter", status: false },
@@ -17,14 +17,14 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Snacks",
+            topic: "Snacks",
             items: [
               { name: "Chips", status: false },
               { name: "Marabou", status: true }
             ]
         },
         {
-            category: "Household Essentials",
+            topic: "Household Essentials",
             items: [
                 { name: "Toilet Paper", status: true },
                 { name: "Dish Soap", status: false },
@@ -32,7 +32,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Personal Care",
+            topic: "Personal Care",
             items: [
                 { name: "Shampoo", status: true },
                 { name: "Toothpaste", status: true },
@@ -40,7 +40,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Produce",
+            topic: "Produce",
             items: [
                 { name: "Apples", status: true },
                 { name: "Bananas", status: true },
@@ -48,7 +48,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Frozen Foods",
+            topic: "Frozen Foods",
             items: [
                 { name: "Frozen Pizza", status: true },
                 { name: "Ice Cream", status: false },
@@ -56,7 +56,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Beverages",
+            topic: "Beverages",
             items: [
                 { name: "Water Bottles", status: true },
                 { name: "Soda", status: false },
@@ -64,7 +64,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Bakery",
+            topic: "Bakery",
             items: [
                 { name: "Bread", status: true },
                 { name: "Bagels", status: false },
@@ -72,7 +72,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Canned Goods",
+            topic: "Canned Goods",
             items: [
                 { name: "Soup", status: true },
                 { name: "Beans", status: false },
@@ -80,7 +80,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Meat",
+            topic: "Meat",
             items: [
                 { name: "Chicken", status: true },
                 { name: "Beef", status: false },
@@ -88,7 +88,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Condiments",
+            topic: "Condiments",
             items: [
                 { name: "Ketchup", status: true },
                 { name: "Mustard", status: false },
@@ -96,7 +96,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Cleaning Supplies",
+            topic: "Cleaning Supplies",
             items: [
                 { name: "All-Purpose Cleaner", status: true },
                 { name: "Laundry Detergent", status: false },
@@ -104,7 +104,7 @@ export const useTodoStore = defineStore('todo', () => {
             ]
         },
         {
-            category: "Office Supplies",
+            topic: "Office Supplies",
             items: [
                 { name: "Printer Paper", status: true },
                 { name: "Pens", status: false },
@@ -141,15 +141,15 @@ export const useTodoStore = defineStore('todo', () => {
     //     ]
     //   }
 
-    const selectedCategory = (index) => {
+    const selectedtopic = (index) => {
         if(list.value != null && list.value.length > 0) {
-            selectedCategoryList.value = list.value[index].items;
-            isCategoryClicked.value = true
-            categoryIndex.value = index
+            selectedtopicList.value = list.value[index].items;
+            istopicClicked.value = true
+            topicIndex.value = index
         }
     }
 
-    // cons handleAddCategory = () {
+    // cons handleAddtopic = () {
 
     // }
 
@@ -157,7 +157,7 @@ export const useTodoStore = defineStore('todo', () => {
     const handleInput = () => {
         if (inputText.value !== '') {
             inputText.value = inputText.value.charAt(0).toUpperCase() + inputText.value.slice(1);
-            list.value[categoryIndex.value].items.push({name: inputText.value});
+            list.value[topicIndex.value].items.push({name: inputText.value});
             console.log(inputText.value)
         }
         
@@ -176,5 +176,5 @@ export const useTodoStore = defineStore('todo', () => {
 
     }
 
-    return { inputText, list, selectedCategoryList, isCategoryClicked, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo, selectedCategory }
+    return { inputText, list, selectedtopicList, istopicClicked, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo, selectedtopic }
 })
