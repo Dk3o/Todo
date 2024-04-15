@@ -1,6 +1,6 @@
 <script setup>
-    import TodoInput from './TodoInput.vue'
-    import TodoButton from './TodoButton.vue'
+    import Input from './Input.vue'
+    import Button from './Button.vue'
     import TodoList from './TodoList.vue'
     import IconArrowUp from './icons/IconArrowUp.vue'
 </script>
@@ -8,8 +8,8 @@
 <template>
     <div class="todo" >
         <div class="todo-header">
-            <TodoInput :placeholder="`Add item...`"/>
-            <TodoButton />
+            <Input :placeholder="`Add item...`"/>
+            <Button />
         </div>
         <TodoList/>
         <div class="scroll-to-top">
