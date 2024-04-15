@@ -5,7 +5,7 @@ export const useTodoStore = defineStore('todo', () => {
 
     const inputText = ref('');
     const selectedtopicList = ref([])
-    const istopicClicked = ref(false)
+    const isTopicClicked = ref(false)
     const topicIndex = ref(null)
     const list = ref([
         {
@@ -144,7 +144,7 @@ export const useTodoStore = defineStore('todo', () => {
     const selectedtopic = (index) => {
         if(list.value != null && list.value.length > 0) {
             selectedtopicList.value = list.value[index].items;
-            istopicClicked.value = true
+            isTopicClicked.value = true
             topicIndex.value = index
         }
     }
@@ -176,5 +176,5 @@ export const useTodoStore = defineStore('todo', () => {
 
     }
 
-    return { inputText, list, selectedtopicList, istopicClicked, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo, selectedtopic }
+    return { inputText, list, selectedtopicList, isTopicClicked, handleInput, handleAddButton, handleEditItem, handleDeleteItem, scrollTo, selectedtopic }
 })

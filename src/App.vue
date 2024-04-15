@@ -1,35 +1,47 @@
 <script setup>
-    import TodoInput from './components/TodoInput.vue';
-    import TodoButton from './components/TodoButton.vue';
+    import Input from './components/Input.vue';
+    import Button from './components/Button.vue';
   import { ref } from 'vue';
-  import Card from './components/Card.vue'
-  import CardContainer from './components/CardContainer.vue'
+  import Topic from './components/Topic.vue'
+  import TopicContainer from './components/TopicContainer.vue'
   import { useTodoStore } from '@/stores/todo';
 
   const todoStore = useTodoStore()
 
+  const activeIndex = ref(null);
   const scroll = ref();
 
-const scrollToTop = () => {
-    scroll.value.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth'
-    });
-};
+  const scrollToTop = () => {
+      scroll.value.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth'
+      });
+  };
+
+  const setActive = (index) => {
+    activeIndex.value = index
+    todoStore.selectedtopic(index)
+  }
 </script>
 
 <template>
   <main>
     <div class="container">
-        <div class="card-container">
-          <div class="card-header">
-            <TodoInput :placeholder="`Add topic...`"/>
-            <TodoButton />
+        <div class="topic-container">
+          <div class="topic-header">
+            <Input :placeholder="`Add topic...`"/>
+            <Button />
           </div>
-          <Card  v-for="(card, index) in todoStore.list" :key="index" :card="card" :topicIndex="index" />
+          <Topic
+            v-for="(topic, index) in todoStore.list"
+            :key="index"
+            :topic="topic"
+            :isActive="activeIndex === index"
+            @click="setActive(index)"
+          />
         </div>
-        <template v-if="todoStore.istopicClicked">
-          <CardContainer />
+        <template v-if="todoStore.isTopicClicked">
+          <TopicContainer />
         </template>
     </div>
   </main>
@@ -45,13 +57,13 @@ const scrollToTop = () => {
     width: 100%;
   }
 
-  .card-container {
+  .topic-container {
     width: 40%;
   }
 
-  .card-header {
+  .topic-header {
     display: flex;
-    padding: 50px 40px 50px 40px;
+    padding: 50px 40px 50px 0;
   }
 
 </style>
